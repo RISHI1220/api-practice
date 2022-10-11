@@ -8,7 +8,7 @@ class Api::MoviesController < ApplicationController
     end
     def update
         @movie=Movie.find(params[:id])
-        @movie.update_attributes(movie_params)
+        @movie.update(title: params[:title],producer: params[:producer])
         render json: Movie.all
     end
     def destroy
@@ -19,8 +19,8 @@ class Api::MoviesController < ApplicationController
         @movie=Movie.find(params[:id])
         render json: @movie
     end
-    private
-    def movie_params
-        params.permit(:title,:producer)
-    end
+    # private
+    # def movie_params
+    #     params.permit(:title,:producer)
+    # end
 end
